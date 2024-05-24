@@ -1,0 +1,22 @@
+{
+  "name": "repo-template",
+  "version": "1.0.0",
+  "description": "A template directory for setting up a new project with default tooling",
+  "scripts": {
+    "prepare": "husky",
+    "code:format-all": "prettier -w .",
+    "deps:outdated": "npm-check-updates",
+    "deps:upgrade": "npm-check-updates -u && npm install"
+  },
+  "author": "Felix Zedén Yverås",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.4",
+    "npm-check-updates": "^16.14.20",
+    "prettier": "^3.2.5",
+    "prettier-plugin-sh": "^0.14.0"
+  }
+}
