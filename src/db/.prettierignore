@@ -1,0 +1,2 @@
+# graphile-migrate relies on file hashes.
+migrations/committed/*.sql

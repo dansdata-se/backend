@@ -1,0 +1,53 @@
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/dansdata/backend:cached
+    command: sleep infinity
+    network_mode: service:db
+
+  db:
+    build:
+      context: ../src/db/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 5432
+    environment:
+      ENVIRONMENT_FILE: /run/secrets/environment
+      POSTGRES_USER_FILE: /run/secrets/dbms-owner-user
+      POSTGRES_PASSWORD_FILE: /run/secrets/dbms-owner-password
+      DB_OWNER_USER_FILE: /run/secrets/db-owner-user
+      DB_OWNER_PASSWORD_FILE: /run/secrets/db-owner-password
+      DB_APP_AUTH_USER_FILE: /run/secrets/db-app-auth-user
+      DB_APP_AUTH_PASSWORD_FILE: /run/secrets/db-app-auth-password
+      DB_NAME_FILE: /run/secrets/db-name
+    secrets:
+      - environment
+      - dbms-owner-user
+      - dbms-owner-password
+      - db-owner-user
+      - db-owner-password
+      - db-app-auth-user
+      - db-app-auth-password
+      - db-name
+
+secrets:
+  environment:
+    file: ../secrets/development/ENVIRONMENT
+  dbms-owner-user:
+    file: ../secrets/development/db/DBMS_OWNER_USER
+  dbms-owner-password:
+    file: ../secrets/development/db/DBMS_OWNER_PASSWORD
+  db-owner-user:
+    file: ../secrets/development/db/DB_OWNER_USER
+  db-owner-password:
+    file: ../secrets/development/db/DB_OWNER_PASSWORD
+  db-app-auth-user:
+    file: ../secrets/development/db/DB_APP_AUTH_USER
+  db-app-auth-password:
+    file: ../secrets/development/db/DB_APP_AUTH_PASSWORD
+  db-name:
+    file: ../secrets/development/db/DB_NAME

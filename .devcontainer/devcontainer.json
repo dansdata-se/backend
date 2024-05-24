@@ -1,0 +1,22 @@
+{
+  "name": "Dansdata Backend",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspaces/dansdata/backend",
+  "service": "devcontainer",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  },
+  "postCreateCommand": "sudo chmod +x .devcontainer/post_create.sh && exec .devcontainer/post_create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dotenv.dotenv-vscode",
+        "skellock.just",
+        "oven.bun-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-ossdata.vscode-postgresql"
+      ]
+    }
+  }
+}

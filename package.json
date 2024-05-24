@@ -1,0 +1,42 @@
+{
+  "name": "dansdata-backend",
+  "version": "1.0.0",
+  "description": "Monorepo for dansdata's containerized backend",
+  "scripts": {
+    "prepare": "husky",
+    "deps:outdated": "npm-check-updates",
+    "deps:upgrade": "npm-check-updates -u && bun install"
+  },
+  "author": "Felix Zedén Yverås",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/js": "^9.7.0",
+    "@tsconfig/bun": "^1.0.7",
+    "@types/bun": "^1.1.6",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/eslint__js": "^8.42.3",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "graphile-migrate": "^2.0.0-rc.2",
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.7",
+    "npm-check-updates": "^16.14.20",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-sh": "^0.14.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^7.16.1",
+    "zx": "^8.1.4"
+  },
+  "dependencies": {
+    "@graphile/simplify-inflection": "^8.0.0-beta.5",
+    "envalid": "^8.0.0",
+    "express": "^4.19.2",
+    "express-jwt": "^8.4.1",
+    "postgraphile": "^5.0.0-beta.27"
+  }
+}
