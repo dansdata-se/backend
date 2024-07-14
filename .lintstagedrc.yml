@@ -1,1 +1,5 @@
-"*": prettier --write --ignore-unknown
+"!(*.{js,ts}|justfile|.justfile)": prettier --write --ignore-unknown
+"*.{js,ts}":
+  - eslint --fix
+  - prettier --write --ignore-unknown
+"{justfile,.justfile}": just --fmt --justfile

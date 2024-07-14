@@ -1,0 +1,14 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "scripts": {},
+  "author": "Felix Zedén Yverås",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@graphile/pg-aggregates": "^0.2.0-beta.6",
+    "@graphile/simplify-inflection": "^8.0.0-beta.5",
+    "envalid": "^8.0.0",
+    "postgraphile": "^5.0.0-beta.26"
+  }
+}

@@ -6,3 +6,21 @@ endOfLine: lf
 singleAttributePerLine: true
 plugins:
   - prettier-plugin-sh
+  - prettier-plugin-organize-imports
+  - prettier-plugin-sql
+database: postgresql
+language: postgresql
+keywordCase: lower
+dataTypeCase: lower
+functionCase: lower
+identifierCase: lower
+paramTypes: >
+  {
+    "named": [":"],
+    "quoted": [":"],
+    "custom": [
+      {
+        "regex": ":'[a-zA-Z0-9_]+'"
+      }
+    ]
+  }

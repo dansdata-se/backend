@@ -2,5 +2,7 @@
 
 set -euxo pipefail
 
-# Add any additionally required packages here
-# sudo apt-get update && sudo apt-get install --no-install-recommends -y
+bun install
+
+just enable_bash_completions
+just genenv

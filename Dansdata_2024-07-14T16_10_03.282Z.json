@@ -1,0 +1,1571 @@
+{
+  "tables": [
+    {
+      "id": 0,
+      "name": "profiles",
+      "x": -692.3215017101766,
+      "y": 137.94961207593644,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "type",
+          "type": "PROFILE_TYPE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "name",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": 65535
+        },
+        {
+          "name": "description",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 3,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffe159",
+      "key": 1720964428774
+    },
+    {
+      "id": 1,
+      "name": "venues",
+      "x": -1399.2058330675095,
+      "y": -781.8969926000678,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "parent_id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "position",
+          "type": "POINT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [
+        {
+          "id": 0,
+          "name": "venues_position_idx",
+          "unique": false,
+          "fields": [
+            "position"
+          ]
+        }
+      ],
+      "color": "#ffe159",
+      "key": 1720965526235
+    },
+    {
+      "id": 2,
+      "name": "languages",
+      "x": 769.2629001423359,
+      "y": -131.50640897020492,
+      "fields": [
+        {
+          "name": "code",
+          "type": "TEXT",
+          "default": "",
+          "check": "length(id) = 2",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "ISO 639-1 two letter language code",
+          "id": 0,
+          "size": 65535,
+          "values": []
+        },
+        {
+          "name": "name",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#bc49c4",
+      "key": 1720965710113
+    },
+    {
+      "id": 3,
+      "name": "metadata",
+      "x": 241.5458944175743,
+      "y": -333.3640910395066,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#bc49c4",
+      "key": 1720965771043
+    },
+    {
+      "id": 4,
+      "name": "values",
+      "x": 763.2754887930395,
+      "y": -333.22851259281754,
+      "fields": [
+        {
+          "name": "metadata_id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "language",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": 65535
+        },
+        {
+          "name": "value",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": 65535
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#bc49c4",
+      "key": 1720966012480
+    },
+    {
+      "id": 5,
+      "name": "individuals",
+      "x": -1399.7627754034079,
+      "y": -395.68796133757047,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffe159",
+      "key": 1720966638698
+    },
+    {
+      "id": 6,
+      "name": "organizations",
+      "x": -1397.3988466933458,
+      "y": -158.63023538161525,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffe159",
+      "key": 1720966671950
+    },
+    {
+      "id": 7,
+      "name": "organization_members",
+      "x": -750.2468471062257,
+      "y": -158.62470980976195,
+      "fields": [
+        {
+          "name": "organization_id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "member_id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "title",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#ffe159",
+      "key": 1720966727792
+    },
+    {
+      "id": 8,
+      "name": "events",
+      "x": -1269.7811634206164,
+      "y": 1053.2356830842446,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "title",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "description",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967263172
+    },
+    {
+      "id": 9,
+      "name": "slots",
+      "x": -1795.1204072589278,
+      "y": 828.9533259510443,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "event",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "start",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "end",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 3,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967310175
+    },
+    {
+      "id": 10,
+      "name": "activities",
+      "x": -1122.175243813863,
+      "y": 803.2124029066322,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "type",
+          "type": "ACTIVITY_TYPE",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "event",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967432584
+    },
+    {
+      "id": 11,
+      "name": "dances",
+      "x": -689.9594802034347,
+      "y": 742.6062767016175,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967619435
+    },
+    {
+      "id": 12,
+      "name": "courses",
+      "x": -687.7188854939578,
+      "y": 851.2419769039963,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967654697
+    },
+    {
+      "id": 13,
+      "name": "competitions",
+      "x": -690.7465305470823,
+      "y": 966.1386052887202,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967851608
+    },
+    {
+      "id": 14,
+      "name": "slot_activities",
+      "x": -1783.9196824441917,
+      "y": 526.3237831387767,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "slot",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "activity",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720967965761
+    },
+    {
+      "id": 15,
+      "name": "activity_actors",
+      "x": -1214.0736003706422,
+      "y": 503.9789374392352,
+      "fields": [
+        {
+          "name": "actor",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "role",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "activity",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720968176206
+    },
+    {
+      "id": 16,
+      "name": "activity_roles",
+      "x": -648.9896895140137,
+      "y": 535.170900293244,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "title",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "approved",
+          "type": "BOOLEAN",
+          "default": "false",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Whether this role has been approved by administrators for general use.\n\nActivity roles are typically selected from a pre-determined set of choices. However, in some instances, these are insuffucient. Users are then able to create custom roles to fit their use case. These roles should not be listed in the pre-determined set of choices for other events before they have been approved by an admin however.",
+          "id": 2,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720968263852
+    },
+    {
+      "id": 17,
+      "name": "tickets",
+      "x": -1117.568186283297,
+      "y": 1277.6206164938035,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "event",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "Can technically be inferred from event -> slots -> slots_acitivies -> slot_activity_ticket but that's pretty far. Also, We want tickets associated with a given event to be deleted if the event is deleted which requires a relation.",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "title",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "description",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 3,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "available_after",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "When these tickets are released",
+          "id": 4,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "available_before",
+          "type": "TIMESTAMPTZ",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "When these tickets are no longer available (e.g. \"early bird\" offer)",
+          "id": 5,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720970195869
+    },
+    {
+      "id": 18,
+      "name": "slot_activity_ticket",
+      "x": -1797.7624450176722,
+      "y": 1362.046641853179,
+      "fields": [
+        {
+          "name": "slot_activity",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "ticket",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720970294188
+    },
+    {
+      "id": 19,
+      "name": "currencies",
+      "x": -581.7213722676714,
+      "y": 1253.6903371969292,
+      "fields": [
+        {
+          "name": "code",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": 65535
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720970497196
+    },
+    {
+      "id": 20,
+      "name": "cost",
+      "x": -840.5512731426714,
+      "y": 1249.4786080406786,
+      "fields": [
+        {
+          "name": "ticket",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "amount",
+          "type": "INTEGER",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "currency",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": 65535,
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720970540832
+    },
+    {
+      "id": 21,
+      "name": "payment_methods",
+      "x": -612.3766972808756,
+      "y": 1663.788955996485,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "title",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "description",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "approved",
+          "type": "BOOLEAN",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Whether this payment method has been approved by administrators for general use.\n\nPayment methods are typically selected from a pre-determined set of choices. However, in some instances, these are insuffucient. Users are then able to create custom methods to fit their use case. These methods should not be listed in the pre-determined set of choices for other events before they have been approved by an admin however.",
+          "id": 3,
+          "size": "",
+          "values": []
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720971277782
+    },
+    {
+      "id": 22,
+      "name": "payment_options",
+      "x": -1145.5546315566946,
+      "y": 1683.9098325747334,
+      "fields": [
+        {
+          "name": "id",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 0,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "ticket",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 1,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "payment_method",
+          "type": "UUID",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "increment": false,
+          "comment": "",
+          "id": 2,
+          "size": "",
+          "values": []
+        },
+        {
+          "name": "uri",
+          "type": "TEXT",
+          "default": "",
+          "check": "",
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "increment": false,
+          "comment": "Applications should verify that they support the uri protocol before display. A `swish://` uri might not be suitable for a desktop user for example.",
+          "id": 3,
+          "size": 65535
+        }
+      ],
+      "comment": "",
+      "indices": [],
+      "color": "#3cde7d",
+      "key": 1720971569009
+    }
+  ],
+  "relationships": [
+    {
+      "startTableId": 1,
+      "startFieldId": 0,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "venues_id_fk",
+      "id": 0
+    },
+    {
+      "startTableId": 1,
+      "startFieldId": 1,
+      "endTableId": 1,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "venues_parent_id_fk",
+      "id": 1
+    },
+    {
+      "startTableId": 4,
+      "startFieldId": 1,
+      "endTableId": 2,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "values_language_fk",
+      "id": 2
+    },
+    {
+      "startTableId": 4,
+      "startFieldId": 0,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "values_metadata_id_fk",
+      "id": 3
+    },
+    {
+      "startTableId": 2,
+      "startFieldId": 1,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Restrict",
+      "name": "languages_name_fk",
+      "id": 4
+    },
+    {
+      "startTableId": 0,
+      "startFieldId": 3,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Set null",
+      "name": "profiles_description_fk",
+      "id": 5
+    },
+    {
+      "startTableId": 5,
+      "startFieldId": 0,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "individuals_id_fk",
+      "id": 6
+    },
+    {
+      "startTableId": 6,
+      "startFieldId": 0,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "organizations_id_fk",
+      "id": 7
+    },
+    {
+      "startTableId": 7,
+      "startFieldId": 0,
+      "endTableId": 6,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "organization_members_organization_id_fk",
+      "id": 8
+    },
+    {
+      "startTableId": 7,
+      "startFieldId": 1,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "organization_members_member_id_fk",
+      "id": 9
+    },
+    {
+      "startTableId": 7,
+      "startFieldId": 2,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Set null",
+      "name": "organization_members_title_fk",
+      "id": 10
+    },
+    {
+      "startTableId": 9,
+      "startFieldId": 1,
+      "endTableId": 8,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Cascade",
+      "name": "slots_event_id_fk",
+      "id": 11
+    },
+    {
+      "startTableId": 11,
+      "startFieldId": 0,
+      "endTableId": 10,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "dances_id_fk",
+      "id": 12
+    },
+    {
+      "startTableId": 12,
+      "startFieldId": 0,
+      "endTableId": 10,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "courses_id_fk",
+      "id": 13
+    },
+    {
+      "startTableId": 13,
+      "startFieldId": 0,
+      "endTableId": 10,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "competitions_id_fk",
+      "id": 14
+    },
+    {
+      "startTableId": 14,
+      "startFieldId": 1,
+      "endTableId": 9,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "slot_activities_slot_fk",
+      "id": 15
+    },
+    {
+      "startTableId": 14,
+      "startFieldId": 2,
+      "endTableId": 10,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "slot_activities_activity_fk",
+      "id": 16
+    },
+    {
+      "startTableId": 10,
+      "startFieldId": 2,
+      "endTableId": 8,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "activities_event_fk",
+      "id": 17
+    },
+    {
+      "startTableId": 15,
+      "startFieldId": 2,
+      "endTableId": 10,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "activity_actors_activity_fk",
+      "id": 18
+    },
+    {
+      "startTableId": 15,
+      "startFieldId": 0,
+      "endTableId": 0,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "activity_actors_actor_fk",
+      "id": 19
+    },
+    {
+      "startTableId": 15,
+      "startFieldId": 1,
+      "endTableId": 16,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "activity_actors_role_fk",
+      "id": 20
+    },
+    {
+      "startTableId": 16,
+      "startFieldId": 1,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "activity_roles_title_fk",
+      "id": 21
+    },
+    {
+      "startTableId": 18,
+      "startFieldId": 1,
+      "endTableId": 17,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "slot_ticket_ticket_fk",
+      "id": 22
+    },
+    {
+      "startTableId": 20,
+      "startFieldId": 2,
+      "endTableId": 19,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "Cascade",
+      "deleteConstraint": "Restrict",
+      "name": "cost_currency_fk",
+      "id": 23
+    },
+    {
+      "startTableId": 20,
+      "startFieldId": 0,
+      "endTableId": 17,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "cost_ticket_fk",
+      "id": 24
+    },
+    {
+      "startTableId": 17,
+      "startFieldId": 2,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tickets_title_fk",
+      "id": 25
+    },
+    {
+      "startTableId": 17,
+      "startFieldId": 3,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tickets_description_fk",
+      "id": 26
+    },
+    {
+      "startTableId": 21,
+      "startFieldId": 1,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "payment_options_title_fk",
+      "id": 27
+    },
+    {
+      "startTableId": 21,
+      "startFieldId": 2,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "payment_options_description_fk",
+      "id": 28
+    },
+    {
+      "startTableId": 22,
+      "startFieldId": 2,
+      "endTableId": 21,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "ticket_payment_options_payment_option_fk",
+      "id": 29
+    },
+    {
+      "startTableId": 22,
+      "startFieldId": 1,
+      "endTableId": 17,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "ticket_payment_options_ticket_fk",
+      "id": 30
+    },
+    {
+      "startTableId": 8,
+      "startFieldId": 1,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "events_title_fk",
+      "id": 31
+    },
+    {
+      "startTableId": 8,
+      "startFieldId": 2,
+      "endTableId": 3,
+      "endFieldId": 0,
+      "cardinality": "One to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "events_description_fk",
+      "id": 32
+    },
+    {
+      "startTableId": 18,
+      "startFieldId": 0,
+      "endTableId": 14,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "slot_activity_ticket_slot_activity_fk",
+      "id": 33
+    },
+    {
+      "startTableId": 17,
+      "startFieldId": 1,
+      "endTableId": 8,
+      "endFieldId": 0,
+      "cardinality": "Many to one",
+      "updateConstraint": "No action",
+      "deleteConstraint": "No action",
+      "name": "tickets_event_fk",
+      "id": 34
+    }
+  ],
+  "notes": [],
+  "subjectAreas": [
+    {
+      "id": 0,
+      "name": "actors",
+      "x": -1951.5300970803773,
+      "y": -831.0731270949883,
+      "width": 1679.2627836037123,
+      "height": 1247.5917444458194,
+      "color": "#ffe159"
+    },
+    {
+      "id": 1,
+      "name": "events",
+      "x": -1949.4450358657891,
+      "y": 467.78040664383946,
+      "width": 1721.572726801243,
+      "height": 1600.3226447463276,
+      "color": "#3cde7d"
+    },
+    {
+      "id": 2,
+      "name": "dance_api_public",
+      "x": 895.6286834209302,
+      "y": 755.1473497145323,
+      "width": 919,
+      "height": 450.6796875,
+      "color": "#175e7a"
+    },
+    {
+      "id": 3,
+      "name": "translations",
+      "x": 52.17968547388852,
+      "y": -423.7595977050847,
+      "width": 1303.6382979241887,
+      "height": 778.3026586920028,
+      "color": "#bc49c4"
+    }
+  ],
+  "database": "postgresql",
+  "types": [],
+  "enums": [
+    {
+      "name": "profile_type",
+      "values": [
+        "individual",
+        "organization",
+        "venue"
+      ]
+    },
+    {
+      "name": "activity_type",
+      "values": [
+        "dance",
+        "course",
+        "competition"
+      ]
+    }
+  ],
+  "title": "Dansdata"
+}
