@@ -24,11 +24,30 @@ create role anonymous;
 
 -------------------------------------------------
 -------------------------------------------------
+-- translations
+-------------------------------------------------
+-- Intended for database operations on
+-- translations
+-------------------------------------------------
+create role translations_reader;
+
+create role translations_editor;
+
+create role translations_admin;
+
+grant translations_reader to translations_editor;
+
+grant translations_editor to translations_admin;
+
+-------------------------------------------------
+-------------------------------------------------
 -- reader
 -------------------------------------------------
 -- A blanket role for reading data in the system.
 -------------------------------------------------
 create role reader;
+
+grant translations_reader to reader;
 
 -------------------------------------------------
 -------------------------------------------------
@@ -41,6 +60,8 @@ create role editor;
 
 grant reader to editor;
 
+grant translations_editor to editor;
+
 -------------------------------------------------
 -------------------------------------------------
 -- admin
@@ -52,3 +73,5 @@ grant reader to editor;
 create role admin;
 
 grant editor to admin;
+
+grant translations_admin to admin;
