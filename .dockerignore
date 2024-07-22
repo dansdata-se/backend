@@ -1,0 +1,22 @@
+.devcontainer/
+.husky/
+.tooling/
+.vscode/
+.git/
+.gitignore
+.dockerignore
+.prettierignore
+.lintstagedrc.yml
+*justfile
+
+Dockerfile*
+docker-compose*
+
+README.md
+LICENSE
+
+secrets/
+
+### .gitignore below this line
+
+node_modules/

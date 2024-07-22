@@ -15,7 +15,8 @@
         "skellock.just",
         "oven.bun-vscode",
         "dbaeumer.vscode-eslint",
-        "ms-ossdata.vscode-postgresql"
+        "ms-ossdata.vscode-postgresql",
+        "matthewpi.caddyfile-support"
       ]
     }
   }

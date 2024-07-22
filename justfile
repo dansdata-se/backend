@@ -22,6 +22,20 @@ help: current_environment
     @just --list --unsorted --justfile {{ justfile() }}
 
 #################################################
+# Deployment
+#################################################
+
+# Start system running in docker compose cluster
+[group("Deployment")]
+start:
+    @docker compose -f src/docker-compose.yml up -d --build --pull always --remove-orphans
+
+# Stop system running in docker compose cluster
+[group("Deployment")]
+stop:
+    @docker compose -f src/docker-compose.yml down
+
+#################################################
 # Code Utils
 #################################################
 

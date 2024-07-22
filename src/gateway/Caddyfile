@@ -1,0 +1,12 @@
+{$GATEWAY_HOST} {
+  log
+  handle /graphql {
+    reverse_proxy {$APP_HOST}
+  }
+  handle /healthz {
+    reverse_proxy {$APP_HOST}
+  }
+  handle {
+    respond 404
+  }
+}
