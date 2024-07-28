@@ -2,6 +2,9 @@ import { cleanEnv, str } from "envalid";
 import express from "express";
 import { createServer } from "node:http";
 
+process.on("SIGTERM", () => process.exit());
+process.on("SIGINT", () => process.exit());
+
 const env = cleanEnv(process.env, {
   APP_HOST: str(),
 });
