@@ -2,6 +2,10 @@
 
 .gitignore
 
+# prettier-plugin-sh breaks certain Dockerfile features:
+# https://github.com/un-ts/prettier/issues/339
+Dockerfile
+
 ### .gitignore below this line
 
 node_modules/
