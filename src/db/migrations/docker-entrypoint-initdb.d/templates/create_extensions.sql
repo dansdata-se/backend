@@ -17,3 +17,7 @@ with
 create extension if not exists postgis
 with
   schema extensions;
+
+create extension if not exists timescaledb
+with
+  schema extensions;
