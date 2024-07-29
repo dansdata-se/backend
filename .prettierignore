@@ -9,3 +9,4 @@ Dockerfile
 ### .gitignore below this line
 
 node_modules/
+dist/
