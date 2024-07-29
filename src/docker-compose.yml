@@ -15,10 +15,47 @@ services:
     secrets:
       - app-host
 
+  keycloak:
+    build:
+      context: ./auth/
+      dockerfile: Dockerfile
+      additional_contexts:
+        docker-helpers: ./docker-helpers/
+    command:
+      - /opt/keycloak/bin/kc.sh
+      - start
+      - --proxy-headers=xforwarded
+      - --http-enabled=true
+      - --optimized
+    depends_on:
+      database:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      private:
+    environment:
+      DB_HOST_FILE: /run/secrets/db-host
+      DB_NAME_FILE: /run/secrets/db-name
+      KC_DB_USERNAME_FILE: /run/secrets/db-keycloak-user
+      KC_DB_PASSWORD_FILE: /run/secrets/db-keycloak-password
+      KC_DB_SCHEMA: "keycloak"
+      KC_HOSTNAME_FILE: /run/secrets/keycloak-hostname
+      KC_HOSTNAME_STRICT_HTTPS: false
+      KEYCLOAK_ADMIN_FILE: /run/secrets/keycloak-admin-user
+      KEYCLOAK_ADMIN_PASSWORD_FILE: /run/secrets/keycloak-admin-password
+    secrets:
+      - db-host
+      - db-keycloak-user
+      - db-keycloak-password
+      - db-name
+      - keycloak-admin-user
+      - keycloak-admin-password
+      - keycloak-hostname
+
   database:
     build:
-      context: ./db/
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: src/db/Dockerfile
     restart: unless-stopped
     networks:
       private:
@@ -30,6 +67,8 @@ services:
       DB_OWNER_PASSWORD_FILE: /run/secrets/db-owner-password
       DB_APP_AUTH_USER_FILE: /run/secrets/db-app-auth-user
       DB_APP_AUTH_PASSWORD_FILE: /run/secrets/db-app-auth-password
+      DB_KEYCLOAK_USER_FILE: /run/secrets/db-keycloak-user
+      DB_KEYCLOAK_PASSWORD_FILE: /run/secrets/db-keycloak-password
       DB_NAME_FILE: /run/secrets/db-name
     secrets:
       - environment
@@ -39,6 +78,8 @@ services:
       - db-owner-password
       - db-app-auth-user
       - db-app-auth-password
+      - db-keycloak-user
+      - db-keycloak-password
       - db-name
 
   gateway:
@@ -123,7 +164,19 @@ secrets:
     environment: DB_APP_AUTH_USER
   db-app-auth-password:
     environment: DB_APP_AUTH_PASSWORD
+  db-host:
+    environment: DB_HOST
+  db-keycloak-user:
+    environment: DB_KEYCLOAK_USER
+  db-keycloak-password:
+    environment: DB_KEYCLOAK_PASSWORD
   db-name:
     environment: DB_NAME
   gateway-host:
     environment: GATEWAY_HOST
+  keycloak-admin-user:
+    environment: KEYCLOAK_ADMIN_USER
+  keycloak-admin-password:
+    environment: KEYCLOAK_ADMIN_PASSWORD
+  keycloak-hostname:
+    environment: KC_HOSTNAME

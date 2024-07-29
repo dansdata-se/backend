@@ -11,6 +11,7 @@ source /usr/local/bin/docker-entrypoint.sh
 
 file_env 'DB_OWNER_USER'
 file_env 'DB_APP_AUTH_USER'
+file_env 'DB_KEYCLOAK_USER'
 file_env 'DB_NAME'
 file_env 'ENVIRONMENT'
 
@@ -25,6 +26,11 @@ create_db() {
   # Grant basic connect access for users
   docker_process_sql \
     -v USERNAME="$DB_APP_AUTH_USER" \
+    -v DB_NAME="$db_name" \
+    <<< 'grant connect on database :DB_NAME to :USERNAME;'
+
+  docker_process_sql \
+    -v USERNAME="$DB_KEYCLOAK_USER" \
     -v DB_NAME="$db_name" \
     <<< 'grant connect on database :DB_NAME to :USERNAME;'
 

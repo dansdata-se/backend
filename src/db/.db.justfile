@@ -72,6 +72,10 @@ uncommit:
 [group("Connect")]
 connect_app: (usql_connect env_var("DB_APP_AUTH_USER") env_var("DB_APP_AUTH_PASSWORD"))
 
+# Connect to keycloak's database user via usql
+[group("Connect")]
+connect_keycloak: (usql_connect env_var("DB_KEYCLOAK_USER") env_var("DB_KEYCLOAK_PASSWORD"))
+
 # Connect to the owner of the database via usql
 [group("Connect")]
 connect_db_owner db_name=env_var("DB_NAME"): (usql_connect env_var("DB_OWNER_USER") env_var("DB_OWNER_PASSWORD") db_name)

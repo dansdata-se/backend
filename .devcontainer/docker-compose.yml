@@ -6,12 +6,12 @@ services:
     volumes:
       - ..:/workspaces/dansdata/backend:cached
     command: sleep infinity
-    network_mode: service:db
+    network_mode: service:database
 
-  db:
+  database:
     build:
-      context: ../src/db/
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: src/db/Dockerfile
     restart: unless-stopped
     ports:
       - 5432
@@ -23,6 +23,8 @@ services:
       DB_OWNER_PASSWORD_FILE: /run/secrets/db-owner-password
       DB_APP_AUTH_USER_FILE: /run/secrets/db-app-auth-user
       DB_APP_AUTH_PASSWORD_FILE: /run/secrets/db-app-auth-password
+      DB_KEYCLOAK_USER_FILE: /run/secrets/db-keycloak-user
+      DB_KEYCLOAK_PASSWORD_FILE: /run/secrets/db-keycloak-password
       DB_NAME_FILE: /run/secrets/db-name
     secrets:
       - environment
@@ -32,6 +34,8 @@ services:
       - db-owner-password
       - db-app-auth-user
       - db-app-auth-password
+      - db-keycloak-user
+      - db-keycloak-password
       - db-name
 
 secrets:
@@ -49,5 +53,9 @@ secrets:
     file: ../secrets/development/db/DB_APP_AUTH_USER
   db-app-auth-password:
     file: ../secrets/development/db/DB_APP_AUTH_PASSWORD
+  db-keycloak-user:
+    file: ../secrets/development/db/DB_KEYCLOAK_USER
+  db-keycloak-password:
+    file: ../secrets/development/db/DB_KEYCLOAK_PASSWORD
   db-name:
     file: ../secrets/development/db/DB_NAME

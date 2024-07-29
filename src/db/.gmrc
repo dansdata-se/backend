@@ -63,6 +63,7 @@
   "placeholders": {
     ":DB_OWNER_USER": "!ENV",
     ":DB_APP_AUTH_USER": "!ENV",
+    ":DB_KEYCLOAK_USER": "!ENV",
     ":DB_NAME": "!ENV",
   },
 
