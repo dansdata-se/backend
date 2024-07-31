@@ -6,7 +6,7 @@ process.on("SIGTERM", () => process.exit());
 process.on("SIGINT", () => process.exit());
 
 const env = cleanEnv(process.env, {
-  APP_HOST: str(),
+  DOCKER_DANCE_API_HOST: str(),
 });
 
 const app = express();
@@ -19,8 +19,8 @@ server.on("error", (e) => {
   console.error(e);
 });
 
-server.listen(env.APP_HOST.split(":")[1]);
+server.listen(env.DOCKER_DANCE_API_HOST.split(":")[1]);
 
 console.log(
-  `Server listening at http://${env.APP_HOST === "devcontainer" ? "localhost" : env.APP_HOST}`
+  `Server listening at http://${env.DOCKER_DANCE_API_HOST === "devcontainer" ? "localhost" : env.DOCKER_DANCE_API_HOST}`
 );

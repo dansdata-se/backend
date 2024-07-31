@@ -35,6 +35,15 @@ start:
 stop:
     @docker compose -f src/docker-compose.yml down
 
+# Restart system running in docker compose cluster
+[group("Deployment")]
+restart: stop start
+
+# Restart system running in docker compose cluster
+[group("Deployment")]
+logs service="":
+    @docker compose -f src/docker-compose.yml logs {{ service }}
+
 #################################################
 # Code Utils
 #################################################

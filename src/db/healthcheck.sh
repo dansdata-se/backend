@@ -9,7 +9,7 @@ source /usr/local/bin/docker-entrypoint.sh
 
 file_env 'DB_OWNER_USER'
 file_env 'DB_OWNER_PASSWORD'
-file_env 'DB_HOST'
+file_env 'DOCKER_DATABASE_HOST'
 file_env 'DB_NAME'
 
-psql "postgres://${DB_OWNER_USER}:${DB_OWNER_PASSWORD}@${DB_HOST}/${DB_NAME}" -AXqtc "select setting from pg_settings where name = 'listen_addresses';" | grep '*'
+psql "postgres://${DB_OWNER_USER}:${DB_OWNER_PASSWORD}@${DOCKER_DATABASE_HOST}/${DB_NAME}" -AXqtc "select setting from pg_settings where name = 'listen_addresses';" | grep '*'

@@ -11,9 +11,9 @@ services:
     networks:
       private:
     environment:
-      APP_HOST_FILE: /run/secrets/app-host
+      DOCKER_DANCE_API_HOST_FILE: /run/secrets/docker-dance-api-host
     secrets:
-      - app-host
+      - docker-dance-api-host
 
   keycloak:
     build:
@@ -24,8 +24,6 @@ services:
     command:
       - /opt/keycloak/bin/kc.sh
       - start
-      - --proxy-headers=xforwarded
-      - --http-enabled=true
       - --optimized
     depends_on:
       database:
@@ -34,23 +32,23 @@ services:
     networks:
       private:
     environment:
-      DB_HOST_FILE: /run/secrets/db-host
+      DOCKER_DATABASE_HOST_FILE: /run/secrets/docker-database-host
       DB_NAME_FILE: /run/secrets/db-name
       KC_DB_USERNAME_FILE: /run/secrets/db-keycloak-user
       KC_DB_PASSWORD_FILE: /run/secrets/db-keycloak-password
-      KC_DB_SCHEMA: "keycloak"
-      KC_HOSTNAME_FILE: /run/secrets/keycloak-hostname
-      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HOSTNAME_FILE: /run/secrets/kc-hostname
+      KC_HOSTNAME_ADMIN_FILE: /run/secrets/kc-hostname-admin
       KEYCLOAK_ADMIN_FILE: /run/secrets/keycloak-admin-user
       KEYCLOAK_ADMIN_PASSWORD_FILE: /run/secrets/keycloak-admin-password
     secrets:
-      - db-host
+      - docker-database-host
+      - db-name
       - db-keycloak-user
       - db-keycloak-password
-      - db-name
+      - kc-hostname
+      - kc-hostname-admin
       - keycloak-admin-user
       - keycloak-admin-password
-      - keycloak-hostname
 
   database:
     build:
@@ -101,11 +99,15 @@ services:
       - /data/caddy:/data
       - caddy-config:/config
     environment:
-      GATEWAY_HOST_FILE: /run/secrets/gateway-host
-      APP_HOST_FILE: /run/secrets/app-host
+      DOMAIN_API_DANSDATA_FILE: /run/secrets/domain-api-dansdata
+      DOMAIN_ADMIN_DANSDATA_FILE: /run/secrets/domain-admin-dansdata
+      DOCKER_DANCE_API_HOST_FILE: /run/secrets/docker-dance-api-host
+      DOCKER_KEYCLOAK_HOST_FILE: /run/secrets/docker-keycloak-host
     secrets:
-      - gateway-host
-      - app-host
+      - domain-api-dansdata
+      - domain-admin-dansdata
+      - docker-dance-api-host
+      - docker-keycloak-host
 
   # Provides access to internal services
   # from external source.
@@ -150,8 +152,19 @@ volumes:
 secrets:
   environment:
     environment: ENVIRONMENT
-  app-host:
-    environment: APP_HOST
+
+  docker-dance-api-host:
+    environment: DOCKER_DANCE_API_HOST
+  docker-database-host:
+    environment: DOCKER_DATABASE_HOST
+  docker-keycloak-host:
+    environment: DOCKER_KEYCLOAK_HOST
+
+  domain-api-dansdata:
+    environment: DOMAIN_API_DANSDATA
+  domain-admin-dansdata:
+    environment: DOMAIN_ADMIN_DANSDATA
+
   dbms-owner-user:
     environment: DBMS_OWNER_USER
   dbms-owner-password:
@@ -164,19 +177,18 @@ secrets:
     environment: DB_APP_AUTH_USER
   db-app-auth-password:
     environment: DB_APP_AUTH_PASSWORD
-  db-host:
-    environment: DB_HOST
   db-keycloak-user:
     environment: DB_KEYCLOAK_USER
   db-keycloak-password:
     environment: DB_KEYCLOAK_PASSWORD
   db-name:
     environment: DB_NAME
-  gateway-host:
-    environment: GATEWAY_HOST
+
+  kc-hostname:
+    environment: KC_HOSTNAME
+  kc-hostname-admin:
+    environment: KC_HOSTNAME_ADMIN
   keycloak-admin-user:
     environment: KEYCLOAK_ADMIN_USER
   keycloak-admin-password:
     environment: KEYCLOAK_ADMIN_PASSWORD
-  keycloak-hostname:
-    environment: KC_HOSTNAME

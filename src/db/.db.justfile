@@ -6,12 +6,12 @@ environment := env_var_or_default("ENVIRONMENT", "development")
 
 # Configure environment variables required by graphile-migrate
 
-export DATABASE_URL := "postgres://" + encode_uri_component(env_var_or_default("DB_OWNER_USER", "user")) + ":" + encode_uri_component(env_var_or_default("DB_OWNER_PASSWORD", "password")) + "@" + env_var_or_default("DB_HOST", "localhost") + "/" + encode_uri_component(env_var_or_default("DB_NAME", ""))
+export DATABASE_URL := "postgres://" + encode_uri_component(env_var_or_default("DB_OWNER_USER", "user")) + ":" + encode_uri_component(env_var_or_default("DB_OWNER_PASSWORD", "password")) + "@" + env_var_or_default("DOCKER_DATABASE_HOST", "localhost") + "/" + encode_uri_component(env_var_or_default("DB_NAME", ""))
 
 # SHADOW and ROOT are required in development only
 
 export SHADOW_DATABASE_URL := DATABASE_URL + "_shadow"
-export ROOT_DATABASE_URL := "postgres://" + encode_uri_component(env_var_or_default("DBMS_OWNER_USER", "postgres")) + ":" + encode_uri_component(env_var_or_default("DBMS_OWNER_PASSWORD", "postgres")) + "@" + env_var_or_default("DB_HOST", "localhost") + "/" + encode_uri_component(env_var_or_default("DBMS_OWNER_USER", "postgres"))
+export ROOT_DATABASE_URL := "postgres://" + encode_uri_component(env_var_or_default("DBMS_OWNER_USER", "postgres")) + ":" + encode_uri_component(env_var_or_default("DBMS_OWNER_PASSWORD", "postgres")) + "@" + env_var_or_default("DOCKER_DATABASE_HOST", "localhost") + "/" + encode_uri_component(env_var_or_default("DBMS_OWNER_USER", "postgres"))
 
 [private]
 default: help
@@ -87,7 +87,7 @@ connect_dbms_owner db_name=env_var("DB_NAME"): (usql_connect env_var("DBMS_OWNER
 [group("Connect")]
 [private]
 usql_connect user password db_name=env_var("DB_NAME"):
-    @usql "postgres://{{ encode_uri_component(user) }}:{{ encode_uri_component(password) }}@{{ env_var("DB_HOST") }}/{{ db_name }}"
+    @usql "postgres://{{ encode_uri_component(user) }}:{{ encode_uri_component(password) }}@{{ env_var("DOCKER_DATABASE_HOST") }}/{{ db_name }}"
 
 #################################################
 # Internal utils

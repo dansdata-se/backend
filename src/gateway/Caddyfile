@@ -1,11 +1,37 @@
-{$GATEWAY_HOST} {
+{$DOMAIN_ADMIN_DANSDATA} {
   log
+
+  @denied not remote_ip 10.243.0.0/22
+  handle @denied {
+    respond 403
+  }
+
+  redir /auth /auth/
+  handle_path /auth/* {
+    reverse_proxy {$DOCKER_KEYCLOAK_HOST}
+  }
+
+  handle {
+    respond 404
+  }
+}
+
+{$DOMAIN_API_DANSDATA} {
+  log
+
+  redir /auth /auth/
+  handle_path /auth/* {
+    reverse_proxy {$DOCKER_KEYCLOAK_HOST}
+  }
+
   handle /graphql {
-    reverse_proxy {$APP_HOST}
+    reverse_proxy {$DOCKER_DANCE_API_HOST}
   }
+
   handle /healthz {
-    reverse_proxy {$APP_HOST}
+    reverse_proxy {$DOCKER_DANCE_API_HOST}
   }
+
   handle {
     respond 404
   }
