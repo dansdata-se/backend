@@ -21,10 +21,6 @@ services:
       dockerfile: Dockerfile
       additional_contexts:
         docker-helpers: ./docker-helpers/
-    command:
-      - /opt/keycloak/bin/kc.sh
-      - start
-      - --optimized
     depends_on:
       database:
         condition: service_healthy

@@ -26,5 +26,7 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 COPY --chmod=555 --from=docker-helpers file_env.sh /usr/local/bin/
 COPY --chmod=555 docker-entrypoint.sh /usr/local/bin/
+COPY --chmod=444 ./realms/* /opt/keycloak/data/import/
 
 ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["/opt/keycloak/bin/kc.sh", "start", "--optimized", "--import-realm"]
