@@ -27,17 +27,17 @@ help: current_environment
 
 # Start system running in docker compose cluster
 [group("Deployment")]
-start:
-    @docker compose -f src/docker-compose.yml up -d --build --pull always --remove-orphans
+start service="":
+    @docker compose -f src/docker-compose.yml up -d --build --pull always --remove-orphans {{ service }}
 
 # Stop system running in docker compose cluster
 [group("Deployment")]
-stop:
-    @docker compose -f src/docker-compose.yml down
+stop service="":
+    @docker compose -f src/docker-compose.yml down {{ service }}
 
 # Restart system running in docker compose cluster
 [group("Deployment")]
-restart: stop start
+restart service="": (stop service) (start service)
 
 # Restart system running in docker compose cluster
 [group("Deployment")]
