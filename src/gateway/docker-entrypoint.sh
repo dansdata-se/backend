@@ -7,5 +7,6 @@ file_env 'DOMAIN_API_DANSDATA'
 file_env 'DOMAIN_ADMIN_DANSDATA'
 file_env 'DOCKER_DANCE_API_HOST'
 file_env 'DOCKER_KEYCLOAK_HOST'
+file_env 'NET_PRIVATE_SUBNET'
 
 exec "$@"

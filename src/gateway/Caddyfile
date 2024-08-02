@@ -1,7 +1,7 @@
 {$DOMAIN_ADMIN_DANSDATA} {
   log
 
-  @denied not remote_ip 10.243.0.0/22
+  @denied not remote_ip {$NET_PRIVATE_SUBNET}
   handle @denied {
     respond 403
   }

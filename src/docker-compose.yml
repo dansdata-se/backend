@@ -103,6 +103,7 @@ services:
       DOMAIN_ADMIN_DANSDATA_FILE: /run/secrets/domain-admin-dansdata
       DOCKER_DANCE_API_HOST_FILE: /run/secrets/docker-dance-api-host
       DOCKER_KEYCLOAK_HOST_FILE: /run/secrets/docker-keycloak-host
+      NET_PRIVATE_SUBNET: ${NET_PRIVATE_SUBNET}
     secrets:
       - domain-api-dansdata
       - domain-admin-dansdata
@@ -133,17 +134,17 @@ services:
       SERVERURL: auto
       SERVERPORT: 51820
       PEERS: 1
-      INTERNAL_SUBNET: 10.243.1.0
-      ALLOWEDIPS: 10.243.0.0/22
+      INTERNAL_SUBNET: ${VPN_SUBNET}
+      ALLOWEDIPS: ${NET_PRIVATE_SUBNET}
       LOG_CONFS: false
 
 networks:
   private:
     ipam:
       config:
-        - subnet: 10.243.0.0/22
-          ip_range: 10.243.0.0/24
-          gateway: 10.243.0.255
+        - subnet: ${NET_PRIVATE_SUBNET}
+          ip_range: ${NET_PRIVATE_IP_RANGE}
+          gateway: ${NET_PRIVATE_GATEWAY}
 
 volumes:
   caddy-config:
